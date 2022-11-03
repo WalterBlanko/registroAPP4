@@ -1,0 +1,27 @@
+<ion-content class="ion-padding">
+  <form #form="ngForm" (ngSubmit)="login()" [formGroup]="loginForm">
+
+    <div class="input-group">
+			<ion-item>
+				<ion-input type="email" placeholder="Correo" formControlName="email"></ion-input>
+			</ion-item>
+			<div *ngIf="(email.dirty || email.touched) && email.errors" class="errors">
+				<span *ngIf="email.errors?.required">El correo es obligatorio</span>
+				<span *ngIf="email.errors?.email">El correo es invalido</span>
+			</div>
+			<ion-item>
+				<ion-input type="password" placeholder="Contraseña" formControlName="password"></ion-input>
+			</ion-item>
+			<div *ngIf="(password.dirty || password.touched) && password.errors" class="errors">
+				<span *ngIf="password.errors?.required">La contraseña es obligatoria</span>
+				<span *ngIf="password.errors?.minlength">La contraseña debe ser de al menos 6 carácteres</span>
+				<span *ngIf="password.errors?.maxlength">La contraseña debe ser de un máximo de 15 carácteres</span>
+			</div>
+		</div>
+
+		<ion-button type="submit" expand="block" [disabled]="!loginForm.valid">Log in</ion-button>
+		<ion-button [routerLink]="['/forget']" type="button" expand="block" color="green" fill="clear"
+			>¿No recuerdas tu contraseña? ¡Haz click aquí!
+		</ion-button>
+  </form>
+</ion-content>

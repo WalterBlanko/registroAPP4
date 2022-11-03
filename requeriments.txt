@@ -1,0 +1,14 @@
+npm i jsqr
+npm i @ionic-native/sqlite
+ionic cordova plugin add cordova-sqlite-storage
+npm i @ionic-native/core
+npm install @ionic/storage
+ionic cordova platform add browser
+ionic cordova build browser
+ionic cordova run browser -l
+
+json-server --watch <nombre_json>.json
+
+
+Fallas:
+archivos de requeriments.txt no fueron la causa
