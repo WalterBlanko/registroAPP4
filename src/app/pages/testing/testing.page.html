@@ -4,9 +4,8 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
-  <ion-button (click)="mostrarRamos()">Click</ion-button>
-  <div *ngFor="let i of asignature">
-    <p>Siglas: {{ i.asignature_id }}</p>
-    <p>Ramo: {{ i.asignature_name }}</p>
-  </div>
+  <button (click)='changeFormat(today)'>Change Date</button>
+  <p>
+    Today is {{ this.changedDate }}
+  </p>
 </ion-content>

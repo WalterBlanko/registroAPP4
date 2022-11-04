@@ -4,6 +4,7 @@ import { DatabaseService } from 'src/app/services/database/database.service';
 import { LoadingController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { SpA } from 'src/app/models/spa';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-testing',
@@ -30,6 +31,7 @@ export class TestingPage implements OnInit {
 
   ngOnInit() {
     // this.addElements();
+    this.changeFormat(this.today);
   }
 
   async addElements() {
@@ -108,4 +110,16 @@ export class TestingPage implements OnInit {
       }
     });
   }
+
+  // Date
+  name = 'Angular ';
+  today = new Date();
+  changedDate = '';
+  pipe = new DatePipe('en-US');
+  changeFormat(today){
+    let ChangedFormat = this.pipe.transform(this.today, 'dd-MM-YYYY');
+    this.changedDate = ChangedFormat;
+    console.log(this.changedDate);
+  }
+
 }
