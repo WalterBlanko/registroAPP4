@@ -26,7 +26,7 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     this.loginForm = new FormGroup({
       email: new FormControl('correo@duocuc.cl', [Validators.required, Validators.email]),
-      password: new FormControl('fdsafdsa', [Validators.required, Validators.minLength(6), Validators.maxLength(15)])
+      password: new FormControl('1234567', [Validators.required, Validators.minLength(6), Validators.maxLength(15)])
     });
   }
 
@@ -42,6 +42,8 @@ export class LoginPage implements OnInit {
       "email": email,
       "password": password
     }
+
+    console.log(email, password);
 
     this.db.getMail(email).then(async data => {
       let auth = this.auth.login(email, password, data.student_email, data.student_password);

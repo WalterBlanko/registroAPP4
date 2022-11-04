@@ -3,6 +3,7 @@ import { ApiDuocService } from 'src/app/services/api_duoc/api-duoc.service';
 import { DatabaseService } from 'src/app/services/database/database.service';
 import { LoadingController } from '@ionic/angular';
 import { Observable } from 'rxjs';
+import { SpA } from 'src/app/models/spa';
 
 @Component({
   selector: 'app-testing',
@@ -13,9 +14,13 @@ export class TestingPage implements OnInit {
   students: any = [];
   asignature: any = [];
   spa: any = [];
+  test: any = [];
 
-  asignature_name: string;
-  asignature_teacher: string;
+  asig_id: any = [];
+  asig_name: any = [];
+
+  id: string;
+  email: string;
 
   constructor(
     private api: ApiDuocService,
@@ -24,7 +29,7 @@ export class TestingPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.addElements();
+    // this.addElements();
   }
 
   async addElements() {
@@ -34,7 +39,7 @@ export class TestingPage implements OnInit {
       this.addStudents();
       this.addAsignatures();
       this.addSPA();
-      this.getSpa();
+      // this.getSpa();
       await loading.dismiss();
     } catch (error) {
       console.log(error.message);
@@ -80,11 +85,12 @@ export class TestingPage implements OnInit {
   }
 
   mostrarRamos() {
-    this.db.getAsignatures()
+    this.db.getSpA('correo@duocuc.cl')
       .then(data => {
         this.asignature = data;
         this.asignature.forEach(element => {
-          console.log(element);
+          this.asig_id = element.asignature_id;
+          this.asig_name = element.asignature_name;
         })
       })
   }
@@ -93,9 +99,12 @@ export class TestingPage implements OnInit {
     let student_email = 'correo@duocuc.cl';
 
     this.db.getSpA(student_email).then(data => {
-      this.spa = data;
-      for (let i = 0; i < this.spa.length; i++) {
-        const element = this.spa[i];
+      this.test = data;
+      for (let i = 0; i < this.test.length; i++) {
+        this.asig_id = this.test[i].asignature_id;
+        this.asig_name = this.test[i].asignature_name;
+
+        console.log(this.asig_id, this.asig_name);
       }
     });
   }

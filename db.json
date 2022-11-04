@@ -23,6 +23,27 @@
       "section": "007",
       "modality": "D",
       "teacher": "Guillermo Eugenio Pinto Fuentes"
+    },
+    {
+      "id": "CSY4111",
+      "name": "Calidad de software",
+      "section": "004",
+      "modality": "D",
+      "teacher": "Vicente Eduardo Aranda Chacon"
+    },
+    {
+      "id": "EAY4470",
+      "name": "Etica para el trabajo",
+      "section": "004",
+      "modality": "D",
+      "teacher": "Mauricio Fernando Mora Friedl"
+    },
+    {
+      "id": "INI5111",
+      "name": "Ingles intermetio",
+      "section": "015",
+      "modality": "D",
+      "teacher": "Jocelyn Kamala de la Merced Betancourt Lillo"
     }
   ],
   "spa": [
@@ -35,7 +56,27 @@
       "student_email": "correo@duocuc.cl"
     },
     {
-      "id": "ASY4131",
+      "id": "CSY4111",
+      "student_email": "correo@duocuc.cl"
+    },
+    {
+      "id": "EAY4470",
+      "student_email": "correo@duocuc.cl"
+    },
+    {
+      "id": "INI5111",
+      "student_email": "correo@duocuc.cl"
+    },
+    {
+      "id": "CSY4111",
+      "student_email": "testing@duocuc.cl"
+    },
+    {
+      "id": "EAY4470",
+      "student_email": "testing@duocuc.cl"
+    },
+    {
+      "id": "INI5111",
       "student_email": "testing@duocuc.cl"
     }
   ]

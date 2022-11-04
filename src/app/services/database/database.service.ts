@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
+import { Observable } from 'rxjs';
 import { Student } from 'src/app/models/student';
 import { Asignature } from 'src/app/models/asignature';
 import { SpA } from 'src/app/models/spa';
-import { test } from 'src/app/models/test';
+import { asist } from 'src/app/models/asist';
 
 @Injectable({
   providedIn: 'root'
@@ -136,25 +137,27 @@ export class DatabaseService {
         a.asignature_id,
         a.asignature_name,
         a.asignature_teacher,
-        st.student_email
+        a.asignature_section,
+        a.asignature_modality
       FROM spa s JOIN asignature a ON a.asignature_id = s.asignature_id
         JOIN student st ON st.student_email = s.student_email
       WHERE st.student_email = ?
     `, [student_email])
       .then((data) => {
-        let test: test[] = [];
+        let asist: asist[] = [];
 
         if (data.rows.length > 0) {
           for (var i = 0; i < data.rows.length; i++) {
-            test.push({
+            asist.push({
               asignature_id: data.rows.item(i).asignature_id,
               asignature_name: data.rows.item(i).asignature_name,
               asignature_teacher: data.rows.item(i).asignature_teacher,
-              student_email: data.rows.item(i).student_email
+              asignature_section: data.rows.item(i).asignature_section,
+              asignature_modality: data.rows.item(i).asignature_modality
             });
           }
         }
-        return test;
+        return asist;
       }, err => {
         console.log('Error: ', err);
         return [];

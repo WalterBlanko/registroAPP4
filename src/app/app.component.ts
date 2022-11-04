@@ -20,7 +20,7 @@ export class AppComponent {
     ) {}
 
   ngOnInit() {
-    // this.addElements();
+    this.addElements();
   }
 
   // Función que obtiene los datos de api db.json y los ingresa a la BD 

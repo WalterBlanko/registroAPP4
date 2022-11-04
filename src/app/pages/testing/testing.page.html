@@ -4,10 +4,9 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="ion-padding">
-  <ion-card class="ion-padding">
-    <ion-card-title>{{ asignature_name }}</ion-card-title>
-    <ion-card-subtitle>{{ asignature_teacher }}</ion-card-subtitle>
-  </ion-card>
-
-  <ion-button (click)="getSpa()">Click</ion-button>
+  <ion-button (click)="mostrarRamos()">Click</ion-button>
+  <div *ngFor="let i of asignature">
+    <p>Siglas: {{ i.asignature_id }}</p>
+    <p>Ramo: {{ i.asignature_name }}</p>
+  </div>
 </ion-content>

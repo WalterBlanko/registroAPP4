@@ -1,6 +1,7 @@
-export class test {
+export class asist {
     asignature_id: string;
     asignature_name: string;
     asignature_teacher: string;
-    student_email: string;
+    asignature_section: string;
+    asignature_modality: string;
 }

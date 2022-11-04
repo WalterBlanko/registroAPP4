@@ -5,37 +5,10 @@
 </ion-header>
 
 <ion-content>
-  <div class="container wrapper">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="inner">
-          <h3>Ramos</h3>
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Nombre del ramo</th>
-                <th scope="col">Seccion</th>
-                <th scope="col">Modalidad</th>
-                <th scope="col">Profesor</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let ramos of asignatureList">
-                <th scope="row">{{ramos.id}}</th>
-                <td>{{ ramos.name }}</td>
-                <td>{{ ramos.section }}</td>
-                <td>{{ ramos.modality }}</td>
-                <td>{{ ramos.teacher }}</td>
-                <td>
-                  <button type="button" class="btn btn-success btn-sm move-right">Edit</button>
-                  <button type="button" class="btn btn-danger btn-sm">Remove</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+  <div>
+    <ion-card class="ion-padding" *ngFor="let i of asignature">
+      <ion-card-title>{{ i.asignature_name }}</ion-card-title>
+      <ion-card-header>{{ i.asignature_id }}_{{ i.asignature_section }}{{ i.asignature_modality }} - {{ i.asignature_teacher }}</ion-card-header>
+    </ion-card>
   </div>
 </ion-content>
