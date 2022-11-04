@@ -3,7 +3,6 @@ import { FormGroup, FormControl, FormBuilder, Validators, Form } from '@angular/
 import { Router, NavigationExtras } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { AuthServiceService } from 'src/app/services/authService/auth-service.service';
-import { ApiDuocService } from 'src/app/services/api_duoc/api-duoc.service';
 import { DatabaseService } from 'src/app/services/database/database.service';
 
 @Component({
@@ -21,17 +20,14 @@ export class LoginPage implements OnInit {
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController,
     private auth: AuthServiceService,
-    private api: ApiDuocService,
     private db: DatabaseService
   ) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(15)])
+      email: new FormControl('correo@duocuc.cl', [Validators.required, Validators.email]),
+      password: new FormControl('fdsafdsa', [Validators.required, Validators.minLength(6), Validators.maxLength(15)])
     });
-
-    this.addStudents();
   }
 
   // Función para validar login
@@ -47,36 +43,26 @@ export class LoginPage implements OnInit {
       "password": password
     }
 
-    if(!this.auth.login(email, password)) {
-      await loading.dismiss();
-      const alert = await this.alertCtrl.create({
-        header: 'Error al iniciar sesión',
-        message: 'Error en el correo y/o contraseña',
-        buttons: ['OK']
-      });
-      await alert.present();
-    } else {
-      this.navegationextras = {
-        state: {
-          data : loginData
-        }
-      }
-      await loading.dismiss();
-      this.router.navigate(['/tabs'], this.navegationextras);
-    }
-  }
+    this.db.getMail(email).then(async data => {
+      let auth = this.auth.login(email, password, data.student_email, data.student_password);
 
-  // Función que obtiene los datos de api db.json y los ingresa a la BD 
-  async addStudents() {
-    const loading = await this.loadingCtrl.create();
-    await loading.present();
-    this.api.getStudents().subscribe( async (data: {}) => {
-      this.students = data;
-      for (let i = 0; i < this.students.length; i++) {
-        let e = this.students[i].id;
-        let p = this.students[i].password;
-        this.db.addStudent(e, p);
+      if (auth == false) {
         await loading.dismiss();
+        const alert = await this.alertCtrl.create({
+          header: 'Error al iniciar sesión',
+          message: 'Error en el correo y/o contraseña',
+          buttons: ['OK']
+        });
+        await alert.present();
+      } else {
+        this.navegationextras = {
+          state: {
+            data: loginData
+          }
+        }
+        console.log('Iniciando sesión');
+        await loading.dismiss();
+        this.router.navigate(['/tabs'], this.navegationextras);
       }
     });
   }

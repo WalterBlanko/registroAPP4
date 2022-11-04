@@ -1,7 +1,7 @@
 export class Asignature {
-    id: string;
-    nombre: string;
-    seccion: string;
-    modalidad: string;
-    profesor: string;
+    asignature_id: string;
+    asignature_name: string;
+    asignature_section: string;
+    asignature_modality: string;
+    asignature_teacher: string;
 }

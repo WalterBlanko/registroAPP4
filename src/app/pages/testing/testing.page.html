@@ -3,7 +3,11 @@
     <ion-title>testing</ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-content class="ion-padding">
+  <ion-card class="ion-padding">
+    <ion-card-title>{{ asignature_name }}</ion-card-title>
+    <ion-card-subtitle>{{ asignature_teacher }}</ion-card-subtitle>
+  </ion-card>
 
-<ion-content>
- <ion-button (click)="addStudents()">Click</ion-button>
+  <ion-button (click)="getSpa()">Click</ion-button>
 </ion-content>

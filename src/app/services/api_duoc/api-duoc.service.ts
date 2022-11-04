@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { Student } from 'src/app/models/student';
 import { Asignature } from 'src/app/models/asignature';
+import { SpA } from 'src/app/models/spa';
 
 @Injectable({
   providedIn: 'root'
@@ -49,15 +50,15 @@ export class ApiDuocService {
     return this.http.get<Asignature>(this.baseurl + '/asignatures/').pipe( retry(1), catchError(this.errorHandl) );
   }
 
+  getSPA(): Observable<SpA> {
+    return this.http.get<SpA>(this.baseurl + '/spa/').pipe( retry(1), catchError(this.errorHandl) ); 
+  }
+
   // PUT
   updateStudent(id, data): Observable<Student> {
     return this.http.put<Student>( this.baseurl + '/students/' + id, JSON.stringify(data), this.httpOptions ).pipe( retry(1), catchError(this.errorHandl));
   }
-  // DELETE
-  deleteStudent(id) {
-    return this.http.delete<Student>( this.baseurl + '/students/' + id, this.httpOptions ).pipe( retry(1), catchError(this.errorHandl) );
-  }
-
+  
   // Error handling
   errorHandl(error) {
     let errorMessage = '';

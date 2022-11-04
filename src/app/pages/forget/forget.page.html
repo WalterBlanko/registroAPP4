@@ -29,9 +29,11 @@
 			</div>
 		</div>
 
-		<ion-button type="submit" expand="block" [disabled]="forgetForm.valid">Log in</ion-button>
+		<ion-button type="submit" expand="block" [disabled]="!forgetForm.valid">Log in</ion-button>
 		<ion-button [routerLink]="['/forget']" type="button" expand="block" color="green" fill="clear">¿No recuerdas tu
 			contraseña? ¡Haz click aquí!
 		</ion-button>
 	</form>
+
+	<ion-button (click)="mostrarUsuarios()">Click</ion-button>
 </ion-content>

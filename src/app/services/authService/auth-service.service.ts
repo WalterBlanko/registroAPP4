@@ -12,19 +12,21 @@ export class AuthServiceService {
     private db: DatabaseService
   ) { }
 
-  login(email, password) {
-    var e = '';
-    var p = '';
-
-    this.db.getMail(email).then(data => {
-      e = data.student_email;
-      p = data.student_password;
-    });
-
-    if( email != e || password != p ) {
-      return true;
+  login(email: any, password: any, e: any, p: any ) {
+    if(email != e || password != p) {
+      return false;
     } else {
+      return true;
+    }
+  }
+
+  forget(email, password) {
+    try {
+      this.db.updateUser(email, password);
+      return true;
+    } catch {
       return false;
     }
   }
+
 }
