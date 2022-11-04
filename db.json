@@ -3,6 +3,10 @@
     {
       "id": "correo@duocuc.cl",
       "password": "1234567"
+    },
+    {
+      "id": "testing@duocuc.cl",
+      "password": "testingpass"
     }
   ],
   "asignatures": [
