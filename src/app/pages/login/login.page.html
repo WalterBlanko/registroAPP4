@@ -1,4 +1,6 @@
-<ion-content class="ion-padding">
+<ion-content class="ion-padding background">
+	<h1>Duoc UC</h1>
+	<h3>Asistencia 2.0</h3>
   <form #form="ngForm" (ngSubmit)="login()" [formGroup]="loginForm">
 
     <div class="input-group">
@@ -20,8 +22,8 @@
 		</div>
 
 		<ion-button type="submit" expand="block" [disabled]="!loginForm.valid">Log in</ion-button>
-		<ion-button [routerLink]="['/forget']" type="button" expand="block" color="green" fill="clear"
-			>¿No recuerdas tu contraseña? ¡Haz click aquí!
+		<ion-button [routerLink]="['/forget']"class="forgot-password-link" type="button" expand="block" color="green" fill="clear"
+			>No recuerdas tu contraseña? ¡Haz click aquí!
 		</ion-button>
   </form>
 </ion-content>
