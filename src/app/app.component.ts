@@ -33,7 +33,7 @@ export class AppComponent {
       this.addSPA();
       await loading.dismiss();
     } catch (error) {
-      console.log(error.message);
+      // console.log(error.message);
       await loading.dismiss();
     }
   }
@@ -66,7 +66,7 @@ export class AppComponent {
   addSPA() {
     this.api.getSPA().subscribe((data: {}) => {
       this.spa = data;
-      console.log(this.spa);
+      // console.log(this.spa);
       for (let index = 0; index < this.spa.length; index++) {
         let ai = this.spa[index].id;
         let se = this.spa[index].student_email;

@@ -30,9 +30,9 @@ export class ForgetPage implements OnInit {
 
   ngOnInit() {
     this.forgetForm = this.formBuilder.group({
-      email: ['correo@duocuc.cl', [Validators.required, Validators.email]],
-      password: ['zeronotsukaima1', [Validators.required, Validators.minLength(6)]],
-      confirm_password: ['zeronotsukaima1', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]]
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirm_password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(15)]]
     }, {
       validator: this.confirmedValidator('password', 'confirm_password')
     });
@@ -81,15 +81,15 @@ export class ForgetPage implements OnInit {
     }
   }
 
-  mostrarUsuarios() {
-    console.log('funcionando');
-    this.db.getStudents().then(data => {
-      this.student = data;
-      this.student.forEach(element => {
-        console.log(element.student_email + ' ' + element.student_password);
-      });
-    })
-  }
+  // mostrarUsuarios() {
+  //   console.log('funcionando');
+  //   this.db.getStudents().then(data => {
+  //     this.student = data;
+  //     this.student.forEach(element => {
+  //       // console.log(element.student_email + ' ' + element.student_password);
+  //     });
+  //   })
+  // }
 
   // Funciones get para con más fácilidad los valores del formulario
   get email() {
@@ -103,8 +103,4 @@ export class ForgetPage implements OnInit {
   get confirm_password() {
     return this.forgetForm.get('confirm_password');
   }
-
-
-
-
 }

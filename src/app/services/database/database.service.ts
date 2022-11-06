@@ -30,7 +30,7 @@ export class DatabaseService {
         this.storage = sqLite;
         this.createTables();
       })
-        .catch((error) => console.log(JSON.stringify(error)));
+        .catch((Error));
     });
   }
 
@@ -48,9 +48,11 @@ export class DatabaseService {
           );
           `, [])
       .then((res) => {
-        console.log(JSON.stringify(res) + 'Tabla alumno creada');
+        // console.log(JSON.stringify(res) + 'Tabla alumno creada');
       })
-      .catch((error) => console.log(JSON.stringify(error)) + 'Error en tabla alumno');
+      .catch((Error)
+      //  => console.log(JSON.stringify(Error)) + 'Error en tabla alumno'
+       );
   }
 
   private createTableAsignature() {
@@ -64,9 +66,11 @@ export class DatabaseService {
       );
     `, [])
       .then((res) => {
-        console.log(JSON.stringify(res) + 'Tabla Ramo creada');
+        // console.log(JSON.stringify(res) + 'Tabla Ramo creada');
       })
-      .catch((error) => console.log(JSON.stringify(error)) + 'Error en tabla ramo');
+      .catch((Error) 
+      // => console.log(JSON.stringify(error)) + 'Error en tabla ramo'
+      );
   }
 
   private createTableSpa() {
@@ -79,35 +83,37 @@ export class DatabaseService {
       );
     `, [])
       .then((res) => {
-        console.log(JSON.stringify(res) + 'Tabla SPA creada');
+        // console.log(JSON.stringify(res) + 'Tabla SPA creada');
       })
-      .catch((error) => console.log(JSON.stringify(error)) + 'Error en tabla SPA');
+      .catch((Error)
+      //  => console.log(JSON.stringify(error)) + 'Error en tabla SPA'
+      );
   }
 
   public addStudent(email, password) {
     this.storage.executeSql('insert into student (student_email, student_password) values ("' + email + '", "' + password + '")', [])
       .then(() => {
-        console.log('Registrado con exito');
+        // console.log('Registrado con exito');
       }, (error) => {
-        console.log('Error al registrar: ' + error.message);
+        // console.log('Error al registrar: ' + Error.message);
       })
   }
 
   public addAsignature(asignature_id, asignature_name, asignature_section, asignature_modality, asignature_teacher) {
     this.storage.executeSql('insert into asignature (asignature_id, asignature_name, asignature_section, asignature_modality, asignature_teacher) values ("' + asignature_id + '", "' + asignature_name + '", "' + asignature_section + '", "' + asignature_modality + '", "' + asignature_teacher + '")', [])
       .then(() => {
-        console.log('Ramo ingresado con exito');
+        // console.log('Ramo ingresado con exito');
       }, (error) => {
-        console.log('Error al ingresar ramo: ' + error.message);
+        // console.log('Error al ingresar ramo: ' + error.message);
       })
   }
 
   public addSPA(asignature_id, student_email) {
     this.storage.executeSql('insert into spa (asignature_id, student_email) values ("' + asignature_id + '", "' + student_email + '")', [])
       .then(() => {
-        console.log('SPA ingresado');
+        // console.log('SPA ingresado');
       }, (error) => {
-        console.log('Error al ingresar SPA: ' + error.message);
+        // console.log('Error al ingresar SPA: ' + error.message);
       })
   }
 
@@ -126,7 +132,7 @@ export class DatabaseService {
         }
         return user;
       }, err => {
-        console.log('Error: ', err);
+        // console.log('Error: ', err);
         return [];
       });
   }
@@ -159,7 +165,7 @@ export class DatabaseService {
         }
         return asist;
       }, err => {
-        console.log('Error: ', err);
+        // console.log('Error: ', err);
         return [];
       });
   }
@@ -182,7 +188,7 @@ export class DatabaseService {
       }
       return asignature;
     }, err => {
-      console.log('Error: ', err);
+      // console.log('Error: ', err);
       return [];
     })
 }
@@ -200,10 +206,10 @@ export class DatabaseService {
   public updateUser(email, password) {
   return this.storage.executeSql(`update student set student_password = '${password}' where student_email = '${email}'`)
     .then(data => {
-      console.log(data + ' Cambio de contraseña exitoso');
+      // console.log(data + ' Cambio de contraseña exitoso');
     })
     .catch((error) => {
-      console.log(error + ' ' + email + ' ' + password)
+      // console.log(error + ' ' + email + ' ' + password)
     });
 }
 }

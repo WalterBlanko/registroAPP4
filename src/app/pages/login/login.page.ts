@@ -32,7 +32,13 @@ export class LoginPage implements OnInit {
 
   // Función para validar login
   async login() {
-    const loading = await this.loadingCtrl.create();
+    const loading = await this.loadingCtrl.create({
+      message: 'Cargando...',
+      duration: 3000,
+      spinner: 'lines-small',
+      // "bubbles" ｜ "circles" ｜ "circular" ｜ "crescent" ｜ "dots" ｜ "lines" ｜ "lines-sharp" ｜ "lines-sharp-small" ｜ "lines-small"
+      
+    });
     await loading.present();
 
     let email = this.loginForm.get('email').value;
@@ -43,7 +49,7 @@ export class LoginPage implements OnInit {
       "password": password
     }
 
-    console.log(email, password);
+    // console.log(email, password);
 
     this.db.getMail(email).then(async data => {
       let auth = this.auth.login(email, password, data.student_email, data.student_password);
@@ -62,7 +68,7 @@ export class LoginPage implements OnInit {
             data: loginData
           }
         }
-        console.log('Iniciando sesión');
+        // console.log('Iniciando sesión');
         await loading.dismiss();
         this.router.navigate(['/tabs'], this.navegationextras);
       }
