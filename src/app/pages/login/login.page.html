@@ -12,11 +12,11 @@
 
 				<h1 class="sombraTi">Bienvenido a</h1>
 				<img src="/assets/images/logoApp.png" class="logoApp">
-				<br>
 				<h3 class="sombraSubTi">Ingrese sus datos:</h3>
 				<!--form validaciones-->
 				<form #form="ngForm" (ngSubmit)="login()" [formGroup]="loginForm">
 					<div class="input-group">
+
 						<!--Correo-->
 						<ion-card class="input">
 							<ion-input type="email" placeholder="Correo" formControlName="email"></ion-input>
@@ -36,14 +36,16 @@
 							<span *ngIf="password.errors?.maxlength">La contraseña debe ser de un máximo de 15
 								carácteres</span>
 						</div>
+
 					</div>
-					<ion-button color="primary" type="submit" expand="block" [disabled]="!loginForm.valid">Log in
+					<!--BotonLogin-->
+					<ion-button class="input" color="primary" type="submit" expand="block" [disabled]="!loginForm.valid">Iniciar Sesión
 					</ion-button>
 					<ion-button class="sombraBtn" [routerLink]="['/forget']" type="button" expand="block" color="green"
 						fill="clear">¿No recuerdas tu contraseña? ¡Haz click aquí!
 					</ion-button>
+					
 				</form>
-				<br>
 			</div>
 		</ion-grid>
 	</div>
