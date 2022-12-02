@@ -3,7 +3,9 @@
     <ion-title>testing</ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content>
- <ion-button (click)="getStudents()">Click</ion-button>
+<ion-content class="ion-padding">
+  <button (click)='changeFormat(today)'>Change Date</button>
+  <p>
+    Today is {{ this.changedDate }}
+  </p>
 </ion-content>

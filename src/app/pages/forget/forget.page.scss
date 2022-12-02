@@ -1,0 +1,105 @@
+ion-content.background {
+  --box-shadow: none;
+  --border-radius: 10px;
+  --background: linear-gradient(120deg,
+      rgb(0, 0, 0) 0%,
+      rgb(221, 169, 0) 100%);
+  height: 48px;
+  font-size: 1rem;
+  color: rgb(211, 207, 0);
+  margin-bottom: 0.5rem;
+  text-transform: initial;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: #dbb300;
+  margin-top: 1%;
+  margin-bottom: 10px;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+h4 {
+  color: #e0d8a7;
+  margin-top: 1%;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+h3 {
+  color: #939fab;
+  font-weight: 600;
+}
+
+form {
+  margin-top: 12rem;
+
+  app-button {
+    display: block;
+    margin-top: 3rem;
+  }
+}
+
+.forgot-password-link {
+  margin-top: 1rem;
+  text-decoration: none;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+  color: #000000;
+}
+
+ion-button {
+  --box-shadow: none;
+  --border-radius: 10px;
+  --background: linear-gradient(90deg,
+      rgb(189, 140, 4) 0%,
+      rgb(92, 92, 92) 100%);
+  height: 48px;
+  font-size: 1rem;
+  color: black;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  text-transform: initial;
+
+}
+
+// Back button
+ion-back-button {
+  --color: white;
+  .button-native {
+    padding-left: 20px;
+  }
+}
+
+// Forget Form
+#forgetForm {
+  ion-item {
+    border-radius: 20px;
+  }
+
+  // Inputs del formulario
+  ion-input {
+    text-align: center;
+  }
+
+  // Spans del formulario
+  span {
+    display: flex;
+    justify-content: center;
+  }
+
+  // Margin de inputs y span
+  .forgetForm__inputSpace,
+  span {
+    margin: 10px 0;
+  }
+}

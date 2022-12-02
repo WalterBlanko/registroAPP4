@@ -1,0 +1,7 @@
+Guards
+API - Geolocalización con su correspondiente limitación de área por sede (https://ionicframework.com/docs/native/geolocation)
+QR - Configurar el QR a aceptar
+
+Ideas: 
+- TouchID (https://ionicframework.com/docs/native/touch-id)
+- Theme Detection (https://ionicframework.com/docs/native/theme-detection)

@@ -1,15 +1,26 @@
-<ion-content class="ion-padding">
-	<form #form="ngForm" (ngSubmit)="forget()" [formGroup]="forgetForm">
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons>
+			<ion-back-button class="backButton" defaultHref="login" text="Regresar" icon="arrow-back-outline"></ion-back-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding background">
+	<h1>Duoc UC</h1>
+	<h3>Recuperar Contraseña</h3>
+	<form id="forgetForm" #form="ngForm" (ngSubmit)="forget()" [formGroup]="forgetForm">
 
 		<div class="input-group">
-			<ion-item>
+			<h4>Ingrese sus datos</h4>
+			<ion-item class="forgetForm__inputSpace">
 				<ion-input type="email" placeholder="Ingresa tu correo" formControlName="email"></ion-input>
 			</ion-item>
 			<div *ngIf="(email.dirty || email.touched) && email.errors" class="errors">
 				<span *ngIf="email.errors?.required">El correo es obligatorio</span>
 				<span *ngIf="email.errors?.email">El correo es invalido</span>
 			</div>
-			<ion-item>
+			<ion-item class="forgetForm__inputSpace">
 				<ion-input type="password" placeholder="Ingresa tu nueva contraseña" formControlName="password">
 				</ion-input>
 			</ion-item>
@@ -17,7 +28,7 @@
 				<span *ngIf="password.errors?.required">La contraseña es obligatoria</span>
 				<span *ngIf="password.errors?.minlength">La contraseña debe ser de al menos 6 carácteres</span>
 			</div>
-			<ion-item>
+			<ion-item class="forgetForm__inputSpace">
 				<ion-input type="password" placeholder="Confirma tu nueva contraseña"
 					formControlName="confirm_password"></ion-input>
 			</ion-item>
@@ -25,13 +36,10 @@
 				<span *ngIf="confirm_password.errors?.required">La contraseña es obligatoria</span>
 				<span *ngIf="confirm_password.errors?.minlength">La contraseña debe ser de al menos 6 carácteres</span>
 				<span *ngIf="password.errors?.maxlength">La contraseña debe ser de un máximo de 15 carácteres</span>
-				<div *ngIf="confirm_password.errors.confirmedValidator">Las contraseñas no coinciden</div>
+				<span *ngIf="confirm_password.errors.confirmedValidator">Las contraseñas no coinciden</span>
 			</div>
 		</div>
 
-		<ion-button type="submit" expand="block" [disabled]="forgetForm.valid">Log in</ion-button>
-		<ion-button [routerLink]="['/forget']" type="button" expand="block" color="green" fill="clear">¿No recuerdas tu
-			contraseña? ¡Haz click aquí!
-		</ion-button>
+		<ion-button type="submit" expand="block" [disabled]="!forgetForm.valid">Cambiar contraseña</ion-button>
 	</form>
 </ion-content>

@@ -1,4 +1,4 @@
 export class Student {
-    id: string;
-    password: string;
+    student_email: string;
+    student_password: string;
 }

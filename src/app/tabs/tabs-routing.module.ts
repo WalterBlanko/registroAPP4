@@ -17,14 +17,14 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/tabs/qr',
+        redirectTo: '/tabs/asist',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/qr',
+    redirectTo: '/tabs/asist',
     pathMatch: 'full'
   }
 ];

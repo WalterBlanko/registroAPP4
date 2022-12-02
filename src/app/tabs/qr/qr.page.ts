@@ -34,7 +34,7 @@ export class QrPage {
   ) {
     const isInStandaloneMode = () => 'standalone' in window.navigator && window.navigator['standalone'];
     if (this.plt.is('ios') && isInStandaloneMode()) {
-      console.log('I am a an iOS PWA!');
+      // console.log('I am a an iOS PWA!');
       // E.g. hide the scan functionality
     }
   }
@@ -50,7 +50,7 @@ export class QrPage {
         data = this.router.getCurrentNavigation().extras.state.data;
         this.email = data.email;
         this.password = data.password;
-        console.log(data)
+        // console.log(data)
       }
     });
   }
@@ -104,7 +104,7 @@ export class QrPage {
   }
 
   async scan() {
-    console.log('SCAN');
+    // console.log('SCAN');
 
     if (this.videoElement.readyState === this.videoElement.HAVE_ENOUGH_DATA) {
       if (this.loading) {
@@ -133,7 +133,7 @@ export class QrPage {
         const code = jsQR(imageData.data, imageData.width, imageData.height, {
           inversionAttempts: 'dontInvert'
         });
-        console.log('code: ', code);
+        // console.log('code: ', code);
 
         if (code) {
           this.scanActive = false;
