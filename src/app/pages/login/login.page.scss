@@ -1,0 +1,68 @@
+.header{
+    border-bottom: 1px solid #ccc;
+    padding: .5em 1em;
+    background-color: #4b77c3;
+}
+
+.footer{
+    border-top: 2px solid #ccc;
+    padding: .6em 2em;
+    background-color: #4b77c3;
+    font-size: xx-small;
+}
+
+.fondo{
+    background-color:antiquewhite;
+    background-image: url("/assets/images/duoc.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-filter: brightness(100%);
+    filter:brightness(100%);
+    
+    columns: auto 1;
+
+    --ion-color-primary: #4b77c3;
+	--ion-color-primary-rgb: 75,119,195;
+	--ion-color-primary-contrast: #ffffff;
+	--ion-color-primary-contrast-rgb: 255,255,255;
+	--ion-color-primary-shade: #4269ac;
+	--ion-color-primary-tint: #5d85c9;
+    
+}
+
+.input{
+
+    background-color: rgba(75, 119, 195, 0.945);
+	--ion-text-color: white;
+
+}
+
+.sombraTi {
+    text-shadow: 1px 1px 1px black;
+    color: white;
+    font: 2.0em monospace;
+    text-align: center;
+}
+
+.sombraSubTi {
+    text-shadow: 1px 1px 1px black;
+    color: white;
+    font: 1.5em monospace;
+    text-align: center;
+}
+
+.sombraBtn {
+    text-shadow: 1px 1px 1px black;
+    color: white;
+    font-size: x-small;
+}
+
+.logoApp {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  }
+
+
