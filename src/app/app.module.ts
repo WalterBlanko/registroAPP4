@@ -9,6 +9,7 @@ import { SQLite } from '@ionic-native/sqlite/ngx';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import { DatabaseService } from './services/database/database.service';
+import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,7 +28,8 @@ import { DatabaseService } from './services/database/database.service';
     },
     SQLite,
     Storage,
-    DatabaseService
+    DatabaseService,
+    Geolocation
   ],
   bootstrap: [AppComponent],
 })

@@ -1,4 +1,4 @@
-npm i -g json-server && npm i jsqr && npm i @ionic-native/sqlite && ionic cordova plugin add cordova-sqlite-storage && npm i @ionic-native/core && npm install @ionic/storage && ionic cordova platform add browser
+npm i -g json-server && npm i jsqr && npm i @ionic-native/sqlite && ionic cordova plugin add cordova-sqlite-storage && npm i @ionic-native/core && npm install @ionic/storage && ionic cordova platform add browser && ionic cordova plugin add cordova-plugin-geolocation && npm install @awesome-cordova-plugins/geolocation
 
 ionic cordova build browser
 ionic cordova run browser -l
