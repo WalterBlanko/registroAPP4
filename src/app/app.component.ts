@@ -18,6 +18,7 @@ export class AppComponent {
   // Coordenadas 
   lat1: number;
   long1: number;
+  distance: number;
 
   // Coordenadas de la sede A.V
   lat2: number = -33.433012;
@@ -97,9 +98,9 @@ export class AppComponent {
       this.lat1 = res.coords.latitude;
       this.long1 = res.coords.longitude;
 
-      let distance = this.calculator();
+      this.distance = this.calculator();
 
-      if (distance > 0.1) {
+      if (this.distance > 0.1) {
         this.showExitConfirm();
       }
     }).catch((err) => {
@@ -130,7 +131,7 @@ export class AppComponent {
 
   showExitConfirm() {
     this.alertCtrl.create({
-      header: 'Está demasiado lejos de la sede',
+      header: `Estás a ${this.distance} km de la sede.`,
       message: 'Debe cerrar la aplicación.',
       backdropDismiss: false,
       buttons: [{
