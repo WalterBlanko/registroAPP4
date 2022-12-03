@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiDuocService } from 'src/app/services/api_duoc/api-duoc.service';
-import { DatabaseService } from 'src/app/services/database/database.service';
-import { LoadingController } from '@ionic/angular';
-import { Observable } from 'rxjs';
-import { SpA } from 'src/app/models/spa';
-import { DatePipe } from '@angular/common';
+import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
 
 @Component({
   selector: 'app-testing',
@@ -12,114 +7,60 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./testing.page.scss'],
 })
 export class TestingPage implements OnInit {
-  students: any = [];
-  asignature: any = [];
-  spa: any = [];
-  test: any = [];
-
-  asig_id: any = [];
-  asig_name: any = [];
-
-  id: string;
-  email: string;
+  pi: number = 3.141592653589793;
 
   constructor(
-    private api: ApiDuocService,
-    private db: DatabaseService,
-    private loadingCtrl: LoadingController
+    private geolocation: Geolocation
   ) { }
 
   ngOnInit() {
-    // this.addElements();
-    this.changeFormat(this.today);
   }
 
-  async addElements() {
-    const loading = await this.loadingCtrl.create();
-    await loading.present();
-    try {
-      this.addStudents();
-      this.addAsignatures();
-      this.addSPA();
-      // this.getSpa();
-      await loading.dismiss();
-    } catch (error) {
-      console.log(error.message);
-      await loading.dismiss();
-    }
-  }
-
-  addStudents() {
-    this.api.getStudents().subscribe((data: {}) => {
-      this.students = data;
-      for (let i = 0; i < this.students.length; i++) {
-        let e = this.students[i].id;
-        let p = this.students[i].password;
-        this.db.addStudent(e, p);
-      }
+  getPosition() {
+    this.geolocation.getCurrentPosition().then((res) => {
+      this.lat1 = res.coords.latitude;
+      this.lat2 = res.coords.longitude;
+    }).catch((err) => {
+      console.log(err);
     });
   }
 
-  addAsignatures() {
-    this.api.getAsignatures().subscribe((data: {}) => {
-      this.asignature = data;
-      for (let index = 0; index < this.asignature.length; index++) {
-        let i = this.asignature[index].id;
-        let n = this.asignature[index].name;
-        let s = this.asignature[index].section;
-        let m = this.asignature[index].modality;
-        let t = this.asignature[index].teacher;
-        this.db.addAsignature(i, n, s, m, t);
-      }
+  watchPosition() {
+    let watch = this.geolocation.watchPosition();
+
+    watch.subscribe((data) => {
+      console.log(data);
     });
   }
 
-  addSPA() {
-    this.api.getSPA().subscribe((data: {}) => {
-      this.spa = data;
-      console.log(this.spa);
-      for (let index = 0; index < this.spa.length; index++) {
-        let ai = this.spa[index].id;
-        let se = this.spa[index].student_email;
-        this.db.addSPA(ai, se);
-      }
-    });
+
+  lat1: number = -33.438233;
+  long1: number = -70.629042;
+  lat2: number = -33.433012;
+  long2: number = -70.614847;
+
+
+  getDist() {
+    this.calculator();
   }
 
-  mostrarRamos() {
-    this.db.getSpA('correo@duocuc.cl')
-      .then(data => {
-        this.asignature = data;
-        this.asignature.forEach(element => {
-          this.asig_id = element.asignature_id;
-          this.asig_name = element.asignature_name;
-        })
-      })
-  }
+  calculator() {
+    var degtorad = 0.01745329;
+    var radtodeg = 57.29577951;
+    var lat1 = this.lat1;
+    var lat2 = this.lat2;
+    var long1 = this.long1;
+    var long2 = this.long2;
 
-  getSpa() {
-    let student_email = 'correo@duocuc.cl';
+    var dlong = (long1 - long2);
 
-    this.db.getSpA(student_email).then(data => {
-      this.test = data;
-      for (let i = 0; i < this.test.length; i++) {
-        this.asig_id = this.test[i].asignature_id;
-        this.asig_name = this.test[i].asignature_name;
+    var dvalue = (Math.sin(lat1 * degtorad) * Math.sin(lat2 * degtorad)) + (Math.cos(lat1 * degtorad) * Math.cos(lat2 * degtorad) * Math.cos(dlong * degtorad));
+    var dd = Math.acos(dvalue) * radtodeg;
+    var miles = (dd * 69.16);
+    miles = (miles * 100)/100;
+    var km = (dd * 111.302);
+    km = Math.round(km * 100)/100;
 
-        console.log(this.asig_id, this.asig_name);
-      }
-    });
-  }
-
-  // Date
-  name = 'Angular ';
-  today = new Date();
-  changedDate = '';
-  pipe = new DatePipe('en-US');
-  changeFormat(today){
-    let ChangedFormat = this.pipe.transform(this.today, 'dd-MM-YYYY');
-    this.changedDate = ChangedFormat;
-    console.log(this.changedDate);
-  }
-
+    console.log('Kilometros: ', km);
+   }
 }

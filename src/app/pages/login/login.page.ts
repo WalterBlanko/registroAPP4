@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, Form } from '@angular/forms';
 import { Router, NavigationExtras } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
+
 import { AuthServiceService } from 'src/app/services/authService/auth-service.service';
 import { DatabaseService } from 'src/app/services/database/database.service';
 
@@ -14,6 +15,7 @@ export class LoginPage implements OnInit {
   loginForm: FormGroup;
   navegationextras: NavigationExtras;
   students: any = [];
+  
 
   constructor(
     private router: Router,
@@ -21,6 +23,7 @@ export class LoginPage implements OnInit {
     private alertCtrl: AlertController,
     private auth: AuthServiceService,
     private db: DatabaseService
+    
   ) { }
 
   ngOnInit() {
@@ -36,8 +39,6 @@ export class LoginPage implements OnInit {
       message: 'Cargando...',
       duration: 3000,
       spinner: 'lines-small',
-      // "bubbles" ｜ "circles" ｜ "circular" ｜ "crescent" ｜ "dots" ｜ "lines" ｜ "lines-sharp" ｜ "lines-sharp-small" ｜ "lines-small"
-      
     });
     await loading.present();
 
