@@ -19,15 +19,16 @@
 
 						<!--Correo-->
 						<ion-card class="input">
-							<ion-input type="email" placeholder="Correo" formControlName="email"></ion-input>
+							<ion-input type="email" placeholder="Ingrese su Correo" formControlName="email"></ion-input>
 						</ion-card>
 						<div *ngIf="(email.dirty || email.touched) && email.errors" class="errors">
 							<span *ngIf="email.errors?.required">El correo es obligatorio</span>
 							<span *ngIf="email.errors?.email">El correo es invalido</span>
 						</div>
+
 						<!--Contraseña-->
 						<ion-card class="input">
-							<ion-input type="password" placeholder="Contraseña" formControlName="password"></ion-input>
+							<ion-input type="password" placeholder="Ingrese su Contraseña" formControlName="password"></ion-input>
 						</ion-card>
 						<div *ngIf="(password.dirty || password.touched) && password.errors" class="errors">
 							<span *ngIf="password.errors?.required">La contraseña es obligatoria</span>
@@ -55,3 +56,4 @@
 			DuocUC®
 		</h5>
 	</div>
+</ion-content>
