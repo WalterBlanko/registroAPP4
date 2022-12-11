@@ -11,7 +11,7 @@ import { SpA } from 'src/app/models/spa';
 })
 export class ApiDuocService {
   // URL 
-  baseurl = 'http://localhost:3000';
+  baseurl = 'https://duocregistroappapi.herokuapp.com';
 
   constructor(
     private http: HttpClient

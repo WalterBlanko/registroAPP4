@@ -30,7 +30,7 @@ export class QrPage {
     private plt: Platform,
     private router: Router,
     private activateRoute: ActivatedRoute,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
   ) {
     const isInStandaloneMode = () => 'standalone' in window.navigator && window.navigator['standalone'];
     if (this.plt.is('ios') && isInStandaloneMode()) {
@@ -71,7 +71,7 @@ export class QrPage {
   handleFile(event: Event) {
     const target = event.target as HTMLInputElement;
     const file: File = (target.files as FileList)[0];
-    // const file = files.item(0);
+    // const file2 = files.item(0);
 
     var img = new Image();
     img.onload = () => {
@@ -172,6 +172,5 @@ export class QrPage {
       ]
     });
   }
-
 
 }
