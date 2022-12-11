@@ -4,3 +4,6 @@ ionic cordova build browser
 ionic cordova run browser -l
 
 json-server --watch db.json
+
+generar apk:
+ionic cap build android --prod --release
