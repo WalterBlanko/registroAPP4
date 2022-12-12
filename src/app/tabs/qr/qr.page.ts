@@ -61,7 +61,7 @@ export class QrPage {
     this.canvasContext = this.canvasElement.getContext('2d');
 
     this.cargar();
-    // this.startScan();
+    this.startScan();
   }
 
   captureImage() {

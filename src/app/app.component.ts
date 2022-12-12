@@ -100,8 +100,10 @@ export class AppComponent {
 
       this.distance = this.calculator();
 
-      if (this.distance > 0.1) {
-        // this.showExitConfirm();
+      console.log(this.lat1, this.long1);
+
+      if (this.distance > 0.15) {
+        this.showExitConfirm();
       }
     }).catch((err) => {
       console.log(err);
